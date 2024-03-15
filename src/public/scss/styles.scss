@@ -1,0 +1,185 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+$blue: #0099CC;
+$blue-dark: #1F7A99;
+$gray: #f8f8f8f8;
+$gray-dark-1: #e4e4e4;
+$gray-dark-2: #d3d4d3;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Display', sans-serif;
+};
+
+.main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    &__brand {
+        margin: 0;
+        &__simbol {
+            width: 128px;
+        };
+        &__logo {
+            font-size: 5rem;
+        };
+    };
+    &__form {
+        margin: 0;
+        padding: 4rem;
+        background-color: $gray;
+        border-radius: 24px;
+        &__title {
+            color: black;
+        };
+        &__login {
+            &__input{
+                margin: 1.5rem 0;
+                &__label {
+                    display: inline;
+                };
+                &__box {
+                    background-color: $gray-dark-1;
+                    width: 100%;
+                    padding: .5rem 1rem;
+                    border-radius: 24px;
+                    border: none;
+                    &:hover {
+                        background-color: $gray-dark-2;
+                    };
+                };
+            };
+            &__submit {
+                width: 100%;
+                padding: .5rem 0;
+                background-color: $blue;
+                border: none;
+                border-radius: 24px;
+                color: white;
+                &:hover {
+                    background-color: $blue-dark;
+                };
+            };
+        };
+        &__register {
+            margin: 1.5rem 0;
+            a {
+                margin-left: 4px;
+                text-decoration: none;
+                color: $blue;
+                &:hover {
+                    color: $blue-dark;
+                    text-decoration: underline;
+                };
+            };
+        };
+        &__hr {
+            border: 1px solid black;
+            margin: 2rem 0;
+        };
+    };
+};
+.header {
+    background-color: white;
+    &__content {
+        padding: 1rem;
+        &__simbol {
+            &__a {
+                color: black;
+                margin: 0;
+                font-size: 2rem;
+                text-decoration: none;
+                img {
+                    height: 56px;
+                    margin-right: 1rem;
+                };
+            };
+        };
+        &__btn {
+            text-decoration: none;
+            color: $blue;
+            &:hover {
+                color: $blue-dark;
+            };
+        };
+    };
+};
+.welcome {
+    width: 100%;
+    text-align: center;
+    background-color: $blue;
+    color: white;
+}
+.product {
+    &__content {
+        &__title {
+            color: black;
+            font-size: 24px;
+            font-weight: 700;
+        };
+        &__price {
+            color: black;
+            font-size: 24px;
+        };
+        &__stock {
+            color: black;
+            opacity: 50%;
+        };
+        &__btn {
+            padding: .5rem 1rem;
+            background-color: $blue;
+            color: white;
+            border: none;
+            border-radius: 48px;
+            &:hover {
+                background-color: $blue-dark;
+            };
+        };
+    };
+};
+.paginate {
+    margin: 1rem 0 2rem 0;
+    &__btn {
+        border: none;
+        border-radius: 48px;
+        background-color: $blue;
+        color: white;
+        padding: .5rem 1rem;
+        &:hover {
+            background-color: $blue-dark;
+        };
+    };
+    &__btnD {
+        border: none;
+        box-shadow: inset 0 0 0 1px $blue;
+        border-radius: 48px;
+        background-color: white;
+        color: $blue;
+        padding: .5rem 1rem;
+        &:hover {
+            background-color: $blue;
+            color: white;
+        };
+    }
+};
+.details {
+    height: 90vh;
+};
+.pagarBtn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    padding: .5rem 0;
+    background-color: $blue;
+    border: none;
+    border-radius: 24px;
+    color: white;
+    &:hover {
+        background-color: $blue-dark;
+    };
+};
+.orderSubtitle {
+    font-size: 24px;
+};

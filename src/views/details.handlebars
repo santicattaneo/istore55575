@@ -1,0 +1,30 @@
+<div class="header">
+    <header class="container">   
+        <div class="row d-flex align-items-center header__content">
+            <div class="col-11  header__content__simbol">
+                <a href="/products" class="header__content__simbol__a d-flex align-items-center">
+                    <img src="./appleLogo.svg" alt="simbolo" class="img-fluid">
+                    iStore
+                </a>
+            </div>
+            <a class="col-1 header__content__btn" href="api/sessions/logout">Logout</a>
+        </div>
+    </header>
+</div>
+<div class="container details d-flex align-items-center">
+    <div class="row g-3 d-flex align-items-center">
+        <div class="col-1"></div>
+        <div class="col-4 details__img">
+            <img class="img-fluid" src="{{product.thumbnail}}" alt="{{product.title}}">
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5 product__content">
+            <p class="product__content__title">{{product.title}}</p>
+            <p class="product__content__description">{{product.description}}</p>
+            <p class="product__content__price">AR$ {{product.price}}</p>
+            <p class="product__content__stock">Disponibles ({{product.stock}})</p>
+            <a href="/purchase?pid={{product._id}}"><button class="product__content__btn">Comprar ahora</button></a>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>

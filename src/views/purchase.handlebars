@@ -1,0 +1,48 @@
+<div class="header">
+    <header class="container">   
+        <div class="row d-flex align-items-center header__content">
+            <div class="col-11  header__content__simbol">
+                <a href="/products" class="header__content__simbol__a d-flex align-items-center">
+                    <img src="./appleLogo.svg" alt="simbolo" class="img-fluid">
+                    iStore
+                </a>
+            </div>
+            <a class="col-1 header__content__btn" href="api/sessions/logout">Logout</a>
+        </div>
+    </header>
+</div>
+<div class="container details d-flex align-items-center">
+    <div class="row g-3 d-flex align-items-center">
+        <div class="col-5">
+            <p class="product__content__stock">Estás comprando</p>
+            <img style="height: 128px;" class="img-fluid" src="{{product.thumbnail}}" alt="{{product.title}}">
+            <p class="product__content__title m-0 mb-2">{{product.title}}</p>
+            <p class="product__content__price">${{product.price}}</p>
+        </div>
+        <div class="col"></div>
+        <div class="col-6 main__form">
+            <p class="product__content__title">Método de pago</p>
+            <form>
+                <div class="main__form__login__input">
+                    <label class="main__form__login__input__label">Nombre del titular de la tarjeta</label>
+                    <input class="main__form__login__input__box" type="text" name="name">
+                </div>
+                <div class="main__form__login__input">
+                    <label class="main__form__login__input__label">Número de la tarjeta</label>
+                    <input class="main__form__login__input__box" type="text" name="card">
+                </div>
+                <div class="main__form__login__input d-flex row g-3">
+                    <div class="col m-0 p-0 me-3">
+                        <label class="main__form__login__input__label">Fecha de vencimiento</label>
+                        <input class="main__form__login__input__box" type="text" name="dueDate">
+                    </div>
+                    <div class="col m-0 p-0">
+                        <label class="main__form__login__input__label">Código de seguridad</label>
+                        <input class="main__form__login__input__box" type="text" name="code">
+                    </div>
+                </div>
+                <a href="/order?pid={{product._id}}&cid={{cartId}}" class="pagarBtn">Pagar</a>
+            </form>
+        </div>
+    </div>
+</div>

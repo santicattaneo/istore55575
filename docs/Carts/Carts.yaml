@@ -1,0 +1,184 @@
+paths:
+  /api/carts/{cid}:
+    get:
+      summary: Este servicio obtiene un carrito de la BDD a través de su ID
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito a buscar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El carrito se obtuvo correctamente de la BDD
+          content:
+            application/json:
+              schema:
+                type: Object
+                items:
+                  $ref: '#components/schemas/Cart'
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo en la conexión
+  /api/carts/{cid}/purchase:
+    get:
+      summary: Este servicio termina la compra del carrito seleccionado a traves de su ID y crea el ticket de la compra
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito a finalizar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El carrito es valido, se finaliza la compra y se genera el ticket
+          content:
+            aplication/json:
+              schema:
+                type: Object
+                items:
+                  $ref: '#components/schemas/Ticket'
+        "422":
+          description: No hay suficiente stock para finalizar la compra de un producto
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo en la conexión
+  /api/carts:
+    post:
+      summary: Este servicio crea un carrito
+      tags:
+        - Carts
+      responses:
+        "201":
+          description: Se crea el carrito en la BDD
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo en la conexión
+  /api/cart/{cid}/product/{pid}:
+    post:
+      summary: Este servicio añade un producto a través de su ID a un carrito a través de su ID
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto a agregar al carrito
+          schema:
+            $type: String
+      responses:
+        "201":
+          description: Se añade el producto al carrito
+          content:
+            aplication/json:
+              schema:
+                type: Object
+                properties:
+                  status:
+                    type: String
+                    description: Resultado de la peticion
+                  message:
+                    type: String
+                    description: Descripción del resultado de la petición 
+                  cid:
+                    type: String
+                    description: ID del carrito al que se le agrega el producto
+                  pid:
+                    type: String
+                    description: ID del producto que se agrega al carrito
+                  quantity:
+                    type: Number
+                    description: Numero de ejemplares del producto que se agregan al carrito
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo en la conexión
+components:
+  schemas:
+    Cart:
+      type: Object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por MongoDB al crear el recurso
+        product:
+          type: ObjectId
+          description: Id del producto a comprar
+      example:
+        _id: ObjectId("507f191e810c19729de860ea")
+        product: ObjetcId("91ugtqrw10jtvwqxuj10p995")
+    Product:
+      type: Object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por MongoDB al crear el recurso
+        title:
+          type: String
+          description: Nombre del producto
+        description:
+          type: String
+          description: Descripción del producto
+        code:
+          type: String
+          description: Código del producto, asignado por el negocio
+        price:
+          type: Number
+          description:  Precio del producto
+        status:
+          type: Boolean
+          description: Disposición del producto en el negocio
+        stock:
+          type: Number
+          description: Numero de ejemplares disponibles del producto en el negocio
+        category:
+          type: String
+          description: Categoría del producto
+        thumbnail:
+          type: Array
+          description: Arreglo de una o más URL a imágenes del producto
+        owner:
+          type: String
+          description: Creador del recurso en la BDD
+      example:
+        _id: ObjectId("507f191e810c19729de860ea")
+        title: Apple Vision Pro
+        description: Es una revolucionaria computadora espacial que fusiona el contenido digital con el mundo físico a la perfección y permite aa los usuarios mantenerse presentes y en contacto con otras personas
+        code: 489345
+        price: 10000000
+        status: true
+        stock: 3
+        category: tech
+        thumbnail: [https://www.img.com/apple-vision-pro/png/1, https://www.img.com/apple-vision-pro/png/2]
+        owner: 'ADMIN'
+    Ticket:
+      type: Object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por MongoDB al crear el recurso
+        code:
+          type: String
+          description: Código de la compra, asignado por el negocio
+        purchase_datetime:
+          type: String
+          description: Fecha de finalización de la compra
+        amount:
+          type: Number
+          description: Precio total de la compra
+        purcharser:
+          type: String
+          description: Email del comprador
+      example:
+        _id: ObjectId("507f191e810c19729de860ea")
+        code: 489345
+        purchase_datetime: 1700018818776
+        amount: 10000000
+        purcharser: ejemplo@gmail.com

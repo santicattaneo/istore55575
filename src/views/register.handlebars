@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row g-3 main">
+        <div class="col-2"></div>
+        <div class="col-3 main__brand">
+            <img class="img-fluid main__brand__simbol" src="./appleLogo.svg" alt="">
+            <p class="main__brand__logo">iStore</p>
+        </div>
+        <div class="col-5 main__form">
+            <h1 class="main__form__title mb-4">Registrarse</h1>
+            <form class="main__form__login" id="registerForm">
+                <div class="row g-3">
+                    <div class="col-5">
+                        <div class="main__form__login__input m-0">
+                            <label class="main__form__login__input__label" for="first_name">Nombre</label>
+                            <input class="main__form__login__input__box" type="text" name="first_name">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="main__form__login__input m-0">
+                            <label class="main__form__login__input__label" for="last_name">Apellido</label>
+                            <input class="main__form__login__input__box" type="text" name="last_name">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="main__form__login__input m-0">
+                            <label class="main__form__login__input__label" for="age">Edad</label>
+                            <input class="main__form__login__input__box" type="text" name="age">
+                        </div>
+                    </div>
+                </div>
+                <div class="main__form__login__input">
+                    <label class="main__form__login__input__label" for="email">Email</label>
+                    <input class="main__form__login__input__box" type="text" name="email">
+                </div>
+                <div class="main__form__login__input">
+                    <label class="main__form__login__input__label" for="password">Contraseña</label>
+                    <input class="main__form__login__input__box" type="password" name="password">
+                </div>
+                <input class="main__form__login__submit" type="submit" value="Registrarse">
+            </form>
+            <p class="main__form__register">¿Ya tienes cuenta?<a href="/login">Inicia sesión</a></p>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<script src="/js/register.js"></script>

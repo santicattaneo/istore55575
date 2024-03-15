@@ -1,0 +1,56 @@
+<div class="header">
+    <header class="container">   
+        <div class="row d-flex align-items-center header__content">
+            <div class="col-11  header__content__simbol">
+                <a href="/products" class="header__content__simbol__a d-flex align-items-center">
+                    <img src="./appleLogo.svg" alt="simbolo" class="img-fluid">
+                    iStore
+                </a>
+            </div>
+            <a class="col-1 header__content__btn" href="/api/users/logout">Logout</a>
+        </div>
+    </header>
+</div>
+<p class="welcome">Hola {{this.user}}! Nos alegramos de tenerte de vuelta</p>
+<div class="container">
+    <h1 class="mt-5">Productos</h1>
+    <hr/>
+    {{#each products}}
+        <div class="row mt-4 product">
+            <div class="col-2 d-flex flex-column align-items-center justify-content-center">
+                <img class="img-fluid" src="{{this.thumbnail}}" alt="imagen real">
+            </div>
+            <div class="col product__content">
+                <p class="product__content__title">{{this.title}}</p>
+                <p class="product__content__description">{{this.description}}</p>
+                <p class="product__content__price">AR$ {{this.price}}</p>
+                <p class="product__content__stock">Disponibles ({{this.stock}})</p>
+                <a href="/details?pid={{this._id}}"><button class="product__content__btn">Ver detalles</button></a>
+            </div>
+        </div>
+        <hr class="mt-4"/>
+    {{/each}}
+    <div class="paginate row ">
+        <div class="d-flex justify-content-center">
+            {{#if hasPrevPage}}
+                    <a class="p-1" href="/products?page={{prevPage}}"><button class="paginate__btn">Anterior</button></a>
+            {{else}}
+                    <a class="p-1" href="#"><button class="paginate__btn" disabled>Anterior</button></a>
+            {{/if}}
+
+            {{#if hasPrevPage}}
+                <a class="p-1" href="/products?page={{prevPage}}"><button class="paginate__btnD">{{prevPage}}</button></a>
+            {{/if}}
+            <a class="p-1" href="#"><button class="paginate__btn" >{{currentPage}}</button></a>
+            {{#if hasNextPage}}
+                <a class="p-1" href="/products?page={{nextPage}}"><button class="paginate__btnD">{{nextPage}}</button></a>
+            {{/if}}
+
+            {{#if hasNextPage}}
+                <a class="p-1" href="/products?page={{nextPage}}"><button class="paginate__btn">Siguiente</button></a>
+            {{else}}
+                <a class="p-1" href="#"><button class="paginate__btn" disabled>Siguiente</button></a>
+            {{/if}}
+        </div>
+    </div>
+</div>
