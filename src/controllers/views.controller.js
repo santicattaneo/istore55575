@@ -9,6 +9,14 @@ export default class ViewsController {
         this.cartsService = new CartsService();
     };
 
+    heroView = async (req, res) => {
+        try {
+            res.render('hero');
+        } catch (error) {
+            res.status(500).send({ status: 'error', error: error.name, description: error.message });
+        }
+    };
+    
     registerView = async (req, res) => {
         try {
             res.render('register')

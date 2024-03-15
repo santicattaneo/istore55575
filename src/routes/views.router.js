@@ -6,6 +6,7 @@ const router = Router();
 
 const viewsController = new ViewsController();
 
+router.get('/', roleAccessMiddleware(accessRolesEnum.PUBLIC), async(req, res) => { await viewsController.heroView(req, res) })
 router.get('/login', roleAccessMiddleware(accessRolesEnum.PUBLIC), async(req, res) => { await viewsController.loginView(req, res) });
 router.get('/register', roleAccessMiddleware(accessRolesEnum.PUBLIC), async(req, res) => { await viewsController.registerView(req, res) });
 router.get('/products', roleAccessMiddleware(accessRolesEnum.USER), async(req, res) => { await viewsController.productsView(req, res) });

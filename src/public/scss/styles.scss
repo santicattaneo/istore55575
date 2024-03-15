@@ -183,3 +183,21 @@ $gray-dark-2: #d3d4d3;
 .orderSubtitle {
     font-size: 24px;
 };
+.hero{
+    height: 100vh;
+    background-image: url('https://www.apple.com/newsroom/images/product/accessories/standard/Apple-BKC-Mumbai-India-media-preview-interior_Full-Bleed-Image.jpg.large.jpg');
+    background-size: cover; 
+    background-position: center center;
+    width: 100%;
+    &__btn{
+        text-decoration: none;
+        border: none;
+        border-radius: 48px;
+        background-color: $blue;
+        color: white;
+        padding: .5rem 1rem;
+        &:hover {
+            background-color: $blue-dark;
+        };
+    }
+}
